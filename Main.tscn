@@ -1,0 +1,283 @@
+[gd_scene format=3 uid="uid://b60jltlpn8eqx"]
+
+[ext_resource type="Script" uid="uid://gtl66e2s2o3i" path="res://Scripts/FireSim_r15.gd" id="1_fos0i"]
+[ext_resource type="Texture2D" uid="uid://c8lsy2thaxgyo" path="res://FlowMaps/flowmap22.jpg" id="2_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://jjudmf3euvdp" path="res://Images/emiter.png" id="3_lgr22"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j41fo"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nffu4"]
+seed = 81
+frequency = 0.0046
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m6i55"]
+noise = SubResource("FastNoiseLite_nffu4")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j41fo"]
+noise_type = 3
+seed = 9
+frequency = 0.0032
+fractal_lacunarity = 1.9
+fractal_gain = 0.335
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wupm8"]
+noise = SubResource("FastNoiseLite_j41fo")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wupm8"]
+noise_type = 2
+seed = 11
+frequency = 0.0179
+fractal_octaves = 4
+fractal_lacunarity = 0.4
+fractal_gain = 0.415
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nffu4"]
+noise = SubResource("FastNoiseLite_wupm8")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m6i55"]
+frequency = 0.0047
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rpsc4"]
+noise = SubResource("FastNoiseLite_m6i55")
+seamless = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rpsc4"]
+viewport_path = NodePath("FireApp/SubViewport")
+
+[sub_resource type="Curve" id="Curve_rpsc4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89855075, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dashp"]
+curve = SubResource("Curve_rpsc4")
+
+[sub_resource type="Curve" id="Curve_wupm8"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 0.7191014), 0.0, 0.0, 0, 0, Vector2(0.96124035, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nffu4"]
+curve = SubResource("Curve_wupm8")
+
+[sub_resource type="Curve" id="Curve_m6i55"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0.03521128, -186.51685), 0.0, 0.0, 0, 0, Vector2(0.40140843, 74.15732), -478.65167, -478.65167, 0, 0, Vector2(0.76760566, -87.64044), 0.0, 0.0, 0, 0, Vector2(1, 15.730347), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rpsc4"]
+curve = SubResource("Curve_m6i55")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yjnm1"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10.195, 11.39, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 12.94
+emission_ring_inner_radius = 10.54
+emission_ring_cone_angle = 22.59
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, -1, 0)
+spread = 97.941
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.28000012
+radial_velocity_min = -445.86002
+radial_velocity_max = 121.01997
+gravity = Vector3(0, -900, 0)
+tangential_accel_curve = SubResource("CurveTexture_rpsc4")
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_nffu4")
+alpha_curve = SubResource("CurveTexture_dashp")
+
+[sub_resource type="Curve" id="Curve_j41fo"]
+_limits = [0.0, 1.0, 0.06081082, 1.0]
+_data = [Vector2(0.06081082, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wupm8"]
+curve = SubResource("Curve_j41fo")
+
+[sub_resource type="Curve" id="Curve_nffu4"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 1.1235957), 0.0, 0.0, 0, 0, Vector2(0.96124035, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m6i55"]
+curve = SubResource("Curve_nffu4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rpsc4"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(120.16, 0, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -2.9999893
+angle_max = 20.000011
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 136.48999
+gravity = Vector3(0, -900.8, 0)
+linear_accel_min = 99.99999
+linear_accel_max = 99.99999
+damping_min = 100.00001
+damping_max = 100.00001
+scale_min = 4.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_m6i55")
+alpha_curve = SubResource("CurveTexture_wupm8")
+
+[sub_resource type="Gradient" id="Gradient_wupm8"]
+colors = PackedColorArray(1, 1, 1, 0.50980395, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nffu4"]
+gradient = SubResource("Gradient_wupm8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Environment" id="Environment_j41fo"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_levels/6 = 0.2
+glow_bloom = 0.2
+
+[node name="Control" type="Control" unique_id=1241935045]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG Color" type="ColorRect" parent="." unique_id=503011880]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FireApp" type="TextureRect" parent="." unique_id=99050430 node_paths=PackedStringArray("emitter_viewport")]
+material = SubResource("CanvasItemMaterial_j41fo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fos0i")
+emitter_viewport = NodePath("SubViewport")
+flicker_enabled = true
+flicker_noise = SubResource("NoiseTexture2D_m6i55")
+vorticity_fire = 40.0
+vorticity_smoke = 8.0
+smoke_diffusion = 2.0
+temp_dissipation = 0.9749
+wind_enabled = true
+wind_noise = SubResource("NoiseTexture2D_wupm8")
+wind = Vector2(0, -4)
+turbulence_enabled = true
+turbulence_noise = SubResource("NoiseTexture2D_nffu4")
+turbulence_strength = 0.05
+flowmap_1 = ExtResource("2_3dxm6")
+flowmap_bump = 10.0
+hdr_mode = true
+smoke_glow = 3.61
+fire_glow = 2.0
+intense_mode = false
+saturation = 1.2
+heat_dist_noise_tex = SubResource("NoiseTexture2D_rpsc4")
+metadata/_edit_lock_ = true
+
+[node name="SourcePreview (EDITOR)" type="TextureRect" parent="FireApp" unique_id=2264278]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rpsc4")
+
+[node name="SubViewport" type="SubViewport" parent="FireApp" unique_id=385146318]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="FlowMap (Enable in settings)" type="GPUParticles2D" parent="FireApp/SubViewport" unique_id=258444635]
+visible = false
+position = Vector2(256, 256)
+amount = 2000
+lifetime = 0.22
+preprocess = 0.38
+speed_scale = 0.5
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_yjnm1")
+
+[node name="GPUParticlesFire" type="GPUParticles2D" parent="FireApp/SubViewport" unique_id=825348578]
+position = Vector2(256, 500)
+amount = 200
+lifetime = 0.19
+speed_scale = 0.5
+fixed_fps = 0
+trail_enabled = true
+trail_lifetime = 0.03
+process_material = SubResource("ParticleProcessMaterial_rpsc4")
+
+[node name="Blob" type="TextureRect" parent="FireApp/SubViewport" unique_id=1044626193]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 181.51001
+offset_right = 384.0
+offset_bottom = 693.51
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.155, 0.155)
+texture = SubResource("GradientTexture2D_nffu4")
+
+[node name="Emiter" type="TextureRect" parent="FireApp/SubViewport" unique_id=1590713360]
+visible = false
+modulate = Color(1, 1, 1, 0.5411765)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 181.405
+offset_right = 512.0
+offset_bottom = 693.405
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("3_lgr22")
+
+[node name="TextEdit" type="TextEdit" parent="FireApp/SubViewport" unique_id=472203064]
+visible = false
+modulate = Color(1, 1, 1, 0.29411766)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 56
+text = "
+
+	
+  V E R R Y  H  O  T"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2100320446]
+environment = SubResource("Environment_j41fo")
